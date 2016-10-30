@@ -1,0 +1,86 @@
+<div ng-controller="ExtendedMetricEditorController as paramCtrl"
+     style="width: 100%;">
+    <div draggable-container="$parent.vis.params.outputs"
+          style="width: 100%;">
+        <div ng-repeat="output in $parent.vis.params.outputs"
+             draggable-item="output"
+             style="width: 100%;">
+            <div class="vis-editor-agg-header output" style="width: 100%;">
+                <!-- open/close editor -->
+                <button aria-label="{{editorOpen ? 'Close' : 'Open'}} Editor"
+                      ng-click="editorOpen = !editorOpen"
+                      type="button"
+                      class="btn btn-primary btn-xs vis-editor-agg-header-toggle">
+                    <i aria-hidden="true" ng-class="{ 'fa-caret-down': editorOpen, 'fa-caret-right': !editorOpen }" class="fa"></i>
+                </button>
+
+                <!-- title -->
+                <span class="vis-editor-agg-header-title">
+                    Output
+                </span>
+
+                <!-- description -->
+                <span ng-if="!editorOpen" class="vis-editor-agg-header-description">
+                    {{output.label || output.formula}}
+                </span>
+
+                <!-- buttons -->
+                <div ng-show="vis.params.outputs.length > 1" class="vis-editor-agg-header-controls btn-group">
+                    <button
+                        ng-click="output.enabled = !output.enabled"
+                        aria-label="{{output.enabled ? 'Disable' : 'Enable'}} Output"
+                        tooltip="{{output.enabled ? 'Disable' : 'Enable'}} Output"
+                        tooltip-append-to-body="true"
+                        type="button" class="btn btn-xs">
+                      <i aria-hidden="true"
+                         class="fa"
+                         ng-class="{'fa-toggle-off': !output.enabled, 'fa-toggle-on': output.enabled}"></i>
+                    </button>
+
+                    <button draggable-handle
+                        aria-label="Modify Priority by Dragging"
+                        tooltip="Modify Priority by Dragging"
+                        tooltip-append-to-body="true"
+                        type="button"
+                        class="btn btn-xs gu-handle">
+                      <i aria-hidden="true" class="fa fa-arrows-v"></i>
+                    </button>
+
+                    <button
+                        aria-label="Remove Output" ng-click="removeOuput(output, $parent.vis.params.outputs)"
+                        tooltip="Remove Output"
+                        tooltip-append-to-body="true"
+                        type="button" class="btn btn-xs btn-danger">
+                      <i aria-hidden="true" class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- editor -->
+            <div ng-if="editorOpen">
+                <div class="form-group">
+                  <label>Formula</label>
+                  <input type="text" ng-model="output.formula" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label>Custom Label</label>
+                  <div>
+                    <input type="text" ng-model="output.label" class="form-control ng-pristine ng-untouched ng-valid">
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-click="addOutput($parent.vis.params.outputs)" class="vis-editor-agg-wide-btn">
+      <div>
+        <div class="btn btn-sm btn-primary">
+          Add output
+        </div>
+      </div>
+    </div>
+</div>
+<hr>
+<div class="form-group">
+  <label>Font Size - {{ vis.params.fontSize }}pt</label>
+  <input type="range" ng-model="vis.params.fontSize" class="form-control" min="12" max="120" />
+</div>
