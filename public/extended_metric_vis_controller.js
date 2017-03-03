@@ -13,10 +13,15 @@ module.controller('KbnExtendedMetricVisController', function ($scope, Private) {
   }
 
   function updateOutputs() {
+    var precision = Math.pow(10, $scope.vis.params.decimal);
+
     $scope.vis.params.outputs.forEach(function (output) {
       try {
         const func = Function("metrics", "return " + output.formula);
         output.value = func(metrics) || "?";
+        if(output.value!="?" && ($scope.vis.params.decimal!==null)) {
+          output.value = Math.round(output.value*(precision))/precision;
+        }
       } catch (e) {
         output.value = '?';
       }
