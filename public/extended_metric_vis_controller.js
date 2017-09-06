@@ -1,10 +1,10 @@
 import _ from 'lodash';
-import AggResponseTabifyTabifyProvider from 'ui/agg_response/tabify/tabify';
-import uiModules from 'ui/modules';
+import { AggResponseTabifyProvider } from 'ui/agg_response/tabify/tabify';
+import { uiModules } from 'ui/modules';
 const module = uiModules.get('kibana/extended_metric_vis', ['kibana']);
 
 module.controller('KbnExtendedMetricVisController', function ($scope, Private) {
-  const tabifyAggResponse = Private(AggResponseTabifyTabifyProvider);
+  const tabifyAggResponse = Private(AggResponseTabifyProvider);
   const metrics = $scope.metrics = [];
   const calcOutputs = $scope.calcOutputs = [];
 

@@ -1,18 +1,19 @@
 import 'plugins/extended_metric_vis/extended_metric_vis.less';
 import 'plugins/extended_metric_vis/extended_metric_vis_controller';
-import TemplateVisTypeTemplateVisTypeProvider from 'ui/template_vis_type/template_vis_type';
-import VisSchemasProvider from 'ui/vis/schemas';
+import { TemplateVisTypeProvider } from 'ui/template_vis_type/template_vis_type';
+import { VisSchemasProvider } from 'ui/vis/schemas';
 import extendedMetricVisTemplate from 'plugins/extended_metric_vis/extended_metric_vis.html';
 import metricVisParamsTemplate from 'plugins/extended_metric_vis/extended_metric_vis_params.html';
+import { VisTypesRegistryProvider } from 'ui/registry/vis_types';
 // we need to load the css ourselves
 
 // we also need to load the controller and used by the template
 
 // register the provider with the visTypes registry
-require('ui/registry/vis_types').register(ExtendedMetricVisProvider);
+VisTypesRegistryProvider.register(ExtendedMetricVisProvider);
 
 function ExtendedMetricVisProvider(Private) {
-  const TemplateVisType = Private(TemplateVisTypeTemplateVisTypeProvider);
+  const TemplateVisType = Private(TemplateVisTypeProvider);
   const Schemas = Private(VisSchemasProvider);
 
   // return the visType object, which kibana will use to display and configure new
