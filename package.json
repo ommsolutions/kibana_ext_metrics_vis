@@ -1,9 +1,9 @@
 {
   "name": "extended_metric_vis",
-  "version": "5.5.0",
+  "version": "5.5.2",
   "main": "index.js",
   "kibana": {
-    "version": "5.5.0"
+    "version": "5.5.2"
   },
   "author": "Olaf Horstmann <oh@omm-solutions.de>",
   "website": "http://www.omm-solutions.de"
