@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "index.js",
   "kibana": {
-    "version": "5.0.0"
+    "version": "5.5.2"
   },
   "author": "Olaf Horstmann <oh@omm-solutions.de>",
   "website": "http://www.omm-solutions.de"
