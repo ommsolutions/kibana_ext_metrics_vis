@@ -1,8 +1,9 @@
 import 'plugins/extended_metric_vis/extended_metric_vis.less';
 import 'plugins/extended_metric_vis/extended_metric_vis_controller';
-import { TemplateVisTypeProvider } from 'ui/template_vis_type/template_vis_type';
-import { VisSchemasProvider } from 'ui/vis/schemas';
-import extendedMetricVisTemplate from 'plugins/extended_metric_vis/extended_metric_vis.html';
+// import { TemplateVisTypeProvider } from 'ui/template_vis_type/template_vis_type';
+import { VisFactoryProvider } from 'ui/vis/vis_factory';
+import { VisSchemasProvider } from 'ui/vis/editors/default/schemas';
+// import extendedMetricVisTemplate from 'plugins/extended_metric_vis/extended_metric_vis.html';
 import metricVisParamsTemplate from 'plugins/extended_metric_vis/extended_metric_vis_params.html';
 import { VisTypesRegistryProvider } from 'ui/registry/vis_types';
 // we need to load the css ourselves
@@ -13,19 +14,20 @@ import { VisTypesRegistryProvider } from 'ui/registry/vis_types';
 VisTypesRegistryProvider.register(ExtendedMetricVisProvider);
 
 function ExtendedMetricVisProvider(Private) {
-  const TemplateVisType = Private(TemplateVisTypeProvider);
+  const VisFactory = Private(VisFactoryProvider);
   const Schemas = Private(VisSchemasProvider);
 
   // return the visType object, which kibana will use to display and configure new
   // Vis object of this type.
-  return new TemplateVisType({
+  return VisFactory.createBaseVisualization({
     name: 'extended_metric',
-    title: 'Extended Metric',
+    title: 'extended-metric',
     description: 'Based on the core Metric-Plugin but gives you the ability' +
       'to output custom aggregates on metric-results.',
     icon: 'fa-calculator',
-    template: extendedMetricVisTemplate,
-    params: {
+    category: CATEGORY.DATA,
+   // template: extendedMetricVisTemplate,
+    visConfig: {
       defaults: {
         handleNoResults: true,
         fontSize: 60,
@@ -37,8 +39,9 @@ function ExtendedMetricVisProvider(Private) {
           }
         ]
       },
-      editor: metricVisParamsTemplate
+
     },
+    editor: metricVisParamsTemplate,
     schemas: new Schemas([
       {
         group: 'metrics',
