@@ -1,0 +1,13 @@
+.extendedMtrVis {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+.extendedMtrVis__container {
+  text-align: center;
+}
