@@ -1,6 +1,6 @@
 # Kibana Extended Metric Plugin
 
-This is a plugin for [Kibana 5.x](https://www.elastic.co/products/kibana) and [Kibana 7.x]((https://www.elastic.co/products/kibana).
+This is a plugin for [Kibana 5.x](https://www.elastic.co/products/kibana) and [Kibana 7.x](https://www.elastic.co/products/kibana).
 It is based on the core Metric-Plugin but gives you the ability to output custom aggregates on metric-results by using custom formula and/or JavaScript.
 
 
@@ -37,7 +37,7 @@ $ ./bin/kibana-plugin install https://github.com/ommsolutions/kibana_ext_metrics
 **7.4.2**
 
 ```sh
-$ ./bin/kibana-plugin install https://github.com/ommsolutions/kibana_ext_metrics_vis/releases/download/7.4.2/extended_metric_vis-7.4.2.zip
+$ ./bin/kibana-plugin install https://github.com/ommsolutions/kibana_ext_metrics_vis/releases/download/7.4.2/kibana_ext_metrics_vis_7.4.2.zip
 ```
 
 ### Manual
