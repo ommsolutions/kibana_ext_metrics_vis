@@ -35,6 +35,7 @@ $ ./bin/kibana-plugin install https://github.com/ommsolutions/kibana_ext_metrics
 ```
 
 **6.2.2**
+
 Check the following repo for install command: https://github.com/Nohame/extended_metric_vis
 
 **7.4.2**
